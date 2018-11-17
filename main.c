@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:06:23 by anrzepec          #+#    #+#             */
-/*   Updated: 2018/11/16 18:35:52 by andrewrze        ###   ########.fr       */
+/*   Updated: 2018/11/17 16:03:14 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		main(int ac, char **av)
 		while (i < ac - 1)
 		{
             c = -1;
-            while (++c < 4)
+            while (++c < 8)
             {
 			    get_next_line(fd, &line);
 			    ft_putendl(line);
