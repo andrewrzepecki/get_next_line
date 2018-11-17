@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:06:23 by anrzepec          #+#    #+#             */
-/*   Updated: 2018/11/13 14:53:12 by anrzepec         ###   ########.fr       */
+/*   Updated: 2018/11/16 18:35:52 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,25 @@ int		main(int ac, char **av)
 {
 	int i;
 	int fd;
-	char **line;
+    int fd2;
+	char *line;
+    int     c;
 
-	i = 0;
+	i = 1;
 	if (ac > 1)
 	{
-		while (i < ac)
+        fd = open(av[i], O_RDONLY);
+        fd2 = open(av[i + 1], O_RDONLY);
+		while (i < ac - 1)
 		{
-			fd = open(av[i], O_RDONLY);
-			get_next_line(fd, line);
-			if (line && *line)
-				ft_putstr(*line);
+            c = -1;
+            while (++c < 4)
+            {
+			    get_next_line(fd, &line);
+			    ft_putendl(line);
+                get_next_line(fd2, &line);
+                ft_putendl(line);
+            }
 			i++;
 		}
 	}
