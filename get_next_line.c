@@ -6,13 +6,13 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 13:28:45 by anrzepec          #+#    #+#             */
-/*   Updated: 2018/11/19 14:00:07 by andrewrze        ###   ########.fr       */
+/*   Updated: 2018/11/19 22:28:02 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int             ft_get_line(char **line, char **s, int fd, int ret)
+static int      ft_get_line(char **line, char **s, int fd, int ret)
 {
     int     i;
     char    *tmp;
@@ -39,7 +39,7 @@ int             ft_get_line(char **line, char **s, int fd, int ret)
     return (1);
 }
 
-int             read_line(int fd, char **s, int *ret)
+static int      read_line(int fd, char **s, int *ret)
 {
     char    buff[BUFF_SIZE + 1];
     char    *tmp;
@@ -63,7 +63,7 @@ int             read_line(int fd, char **s, int *ret)
 
 int				get_next_line(const int fd, char **line)
 {
-    static char     *s[5000];
+    static char     *s[FD_SIZE];
     int				ret;
     int             ptr;
 
