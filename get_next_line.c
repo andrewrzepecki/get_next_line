@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 13:28:45 by anrzepec          #+#    #+#             */
-/*   Updated: 2018/11/19 13:44:57 by andrewrze        ###   ########.fr       */
+/*   Updated: 2018/11/19 14:00:07 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int             read_line(int fd, char **s, int *ret)
 
     while ((*ret = read(fd, buff, BUFF_SIZE)))
     {
-        if (ret < 0)
+        if (*ret < 0)
             return (-1);
         buff[*ret] = '\0';
         if (!s[fd])
@@ -63,7 +63,7 @@ int             read_line(int fd, char **s, int *ret)
 
 int				get_next_line(const int fd, char **line)
 {
-    static char     *s[255];
+    static char     *s[5000];
     int				ret;
     int             ptr;
 
