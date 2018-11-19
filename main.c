@@ -1,42 +1,43 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 14:06:23 by anrzepec          #+#    #+#             */
-/*   Updated: 2018/11/16 18:35:52 by andrewrze        ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
+#include <string.h>
+#include <stdio.h>
 #include "get_next_line.h"
 
-int		main(int ac, char **av)
-{
-	int i;
-	int fd;
-    int fd2;
-	char *line;
-    int     c;
+/*
+** 4 lines via STDIN with 16 chars with Line Feed
+*/
 
-	i = 1;
-	if (ac > 1)
+int				main(void)
+{
+	char		*line;
+	int			fd;
+	int			ret;
+	int			count_lines;
+	int			errors;
+
+	fd = 0;
+	count_lines = 0;
+	errors = 0;
+	line = NULL;
+	while ((ret = get_next_line(fd, &line)) > 0)
 	{
-        fd = open(av[i], O_RDONLY);
-        fd2 = open(av[i + 1], O_RDONLY);
-		while (i < ac - 1)
-		{
-            c = -1;
-            while (++c < 4)
-            {
-			    get_next_line(fd, &line);
-			    ft_putendl(line);
-                get_next_line(fd2, &line);
-                ft_putendl(line);
-            }
-			i++;
-		}
+		if (count_lines == 0 && strcmp(line, "1234567890abcde") != 0)
+			errors++;
+		if (count_lines == 1 && strcmp(line, "fghijklmnopqrst") != 0)
+			errors++;
+		if (count_lines == 2 && strcmp(line, "edcba0987654321") != 0)
+			errors++;
+		if (count_lines == 3 && strcmp(line, "tsrqponmlkjihgf") != 0)
+			errors++;
+		count_lines++;
+        printf("-----line: %s\n", line);
+		if (count_lines > 50)
+			break ;
 	}
+	if (count_lines != 4)
+		printf("-> must have returned '1' four times instead of %d time(s)\n", count_lines);
+	if (errors > 0)
+		printf("-> must have read \"1234567890abcde\", \"fghijklmnopqrst\", \"edcba0987654321\" and \"tsrqponmlkjihgf\"\n");
+	if (count_lines == 4 && errors == 0)
+		printf("OK\n");
 	return (0);
 }

@@ -6,14 +6,14 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 13:26:27 by anrzepec          #+#    #+#             */
-/*   Updated: 2018/11/13 14:46:31 by anrzepec         ###   ########.fr       */
+/*   Updated: 2018/11/19 09:45:54 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# define BUFF_SIZE 40
+# define BUFF_SIZE 1
 
 # include <unistd.h>
 # include <stdlib.h>
