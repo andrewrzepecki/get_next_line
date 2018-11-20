@@ -6,7 +6,7 @@
 /*   By: anrzepec <anrzepec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 19:12:29 by anrzepec          #+#    #+#             */
-/*   Updated: 2018/11/13 11:01:28 by anrzepec         ###   ########.fr       */
+/*   Updated: 2018/11/20 12:10:56 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ int					ft_strnequ(char const *s1, char const *s2, size_t n);
 int					ft_strequ(char const *s1, char const *s2);
 
 int					ft_strcmp(char const *s1, char const *s2);
-
-char				*ft_strndup(char const *s1, size_t n);
 
 int					ft_strncmp(char const *s1, char const *s2, size_t n);
 
